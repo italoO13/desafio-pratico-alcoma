@@ -14,11 +14,11 @@ const Filter = ({ handleInput, filter, clients }) => (
     </label>
     <label htmlFor="dataInicial">
       Data inicial
-      <input onChange={handleInput} value={filter.initialDate} type="date" />
+      <input onChange={handleInput} value={filter.initialDate} name="initialDate" type="date" />
     </label>
     <label htmlFor="dataInicial">
       Data Final
-      <input onChange={handleInput} value={filter.finalDate} type="date" />
+      <input onChange={handleInput} value={filter.finalDate} name="finalDate" type="date" />
     </label>
   </Container>
 );

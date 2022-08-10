@@ -1,10 +1,10 @@
 import React from 'react';
-import './App.css';
+import Container from './App.styles';
 
 const App = () => (
-  <div className="App">
+  <Container>
     <h1>Desafio técnico</h1>
-  </div>
+  </Container>
 );
 
 export default App;

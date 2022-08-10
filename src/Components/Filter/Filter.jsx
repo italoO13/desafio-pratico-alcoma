@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Container } from './Filter.styles';
 
 const Filter = ({ handleInput, filter, clients }) => (
-  <div>
-    <select onChange={handleInput} name="selectClient">
-      {clients && clients.map((client) => (
-        <option value={client} key={client}>{client}</option>
-      ))}
-    </select>
+  <Container>
+    <label htmlFor="selectClient">
+      Cliente
+      <select onChange={handleInput} name="selectClient">
+        {clients && clients.map((client) => (
+          <option value={client} key={client}>{client}</option>
+        ))}
+      </select>
+    </label>
     <label htmlFor="dataInicial">
       Data inicial
       <input onChange={handleInput} value={filter.initialDate} type="date" />
@@ -16,7 +20,7 @@ const Filter = ({ handleInput, filter, clients }) => (
       Data Final
       <input onChange={handleInput} value={filter.finalDate} type="date" />
     </label>
-  </div>
+  </Container>
 );
 
 Filter.propTypes = {

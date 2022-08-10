@@ -13,7 +13,7 @@ const Header = () => (
       <h1><Link to="/">Desafio Prático</Link></h1>
       <ul>
         <li><Link to="/questao1">Questão 1</Link></li>
-        <li><Link to="/questão2">Questão 2</Link></li>
+        <li><Link to="/questao2">Questão 2</Link></li>
       </ul>
     </Nav>
   </Container>

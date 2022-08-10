@@ -1,16 +1,18 @@
+import moment from 'moment';
 import fetchHistoric from '../Services/fetchHistoric';
 
 const formatDate = (date) => {
   const dayMonthYear = date.split('/');
-  return new Date(dayMonthYear[2], dayMonthYear[1] - 1, dayMonthYear[0]);
+  const newDate = new Date(dayMonthYear[2], dayMonthYear[1] - 1, dayMonthYear[0]);
+  return moment(newDate).format('YYYY/MM/DD');
 };
 
 const onlyUsersByClient = (users, client, dataFin, dataInit) => {
-  const dataFinFormat = formatDate(dataFin);
-  const dataInitFormat = formatDate(dataInit);
+  const dataFinFormat = moment(dataFin).format('YYYY/MM/DD');
+  const dataInitFormat = moment(dataInit).format('YYYY/MM/DD');
   const usersClient = users.filter((user) => user.clientId === client)
     .filter(
-      (user) => user.lastConnection >= dataInitFormat && user.lastConnection <= dataFinFormat,
+      (user) => user.lastConnection <= dataFinFormat && user.lastConnection >= dataInitFormat,
     );
   return [...new Set(usersClient.map((user) => user.userId))].length;
 };

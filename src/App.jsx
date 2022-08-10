@@ -1,9 +1,10 @@
 import React from 'react';
 import Container from './App.styles';
+import Header from './Components/Header/Header';
 
 const App = () => (
   <Container>
-    <h1>Desafio técnico</h1>
+    <Header />
   </Container>
 );
 

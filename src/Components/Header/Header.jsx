@@ -10,7 +10,7 @@ const Header = () => (
       <img src={logo} alt="logo Vagalume" />
     </Wrapper>
     <Nav>
-      <h1>Desafio Prático</h1>
+      <h1><Link to="/">Desafio Prático</Link></h1>
       <ul>
         <li><Link to="/questao1">Questão 1</Link></li>
         <li><Link to="/questão2">Questão 2</Link></li>

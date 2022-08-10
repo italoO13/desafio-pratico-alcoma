@@ -28,4 +28,24 @@ export const Nav = styled.nav`
     font-weight:600;
     letter-spacing: 1.5px;
   }
+  ul{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-left:20px;
+    font-size:1.5rem;
+  }
+  li {
+    color: #FFF;
+    
+  }
+  a{
+    color:#FFF;
+    text-decoration:none;
+    margin:10px;
+    transition:all 0.5s;
+  }
+  a:hover{
+    color:#F26938;
+  }
 `;

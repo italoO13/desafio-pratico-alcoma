@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  desafio:
+    build: ./
+    container_name: container-desafio
+    ports:
+      - "3000-3000"
+    volumes:
+      - ./:/srv/desafio
+    command: npm start

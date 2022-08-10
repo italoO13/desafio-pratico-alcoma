@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Container from './Card.style';
 
 const Card = ({ title, info }) => (
-  <div className="card">
+  <Container>
     <h1>{title}</h1>
     <p>
       {info}
     </p>
-  </div>
+  </Container>
 );
 
 Card.propTypes = {

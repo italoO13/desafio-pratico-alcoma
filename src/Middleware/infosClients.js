@@ -7,10 +7,10 @@ const formatDate = (date) => {
   return moment(newDate).format('YYYY/MM/DD');
 };
 
-const onlyUsersByClient = (users, client, dataFin, dataInit) => {
-  const dataFinFormat = moment(dataFin).format('YYYY/MM/DD');
-  const dataInitFormat = moment(dataInit).format('YYYY/MM/DD');
-  const usersClient = users.filter((user) => user.clientId === client)
+const onlyUsersByClient = (users, selectClient, initialDate, finalDate) => {
+  const dataFinFormat = moment(finalDate).format('YYYY/MM/DD');
+  const dataInitFormat = moment(initialDate).format('YYYY/MM/DD');
+  const usersClient = users.filter((user) => user.clientId === selectClient)
     .filter(
       (user) => user.lastConnection <= dataFinFormat && user.lastConnection >= dataInitFormat,
     );
@@ -27,9 +27,10 @@ const formatUser = ({
   userId,
 });
 
-const userByClient = async (client, dataFin, dataInit) => {
+const userByClient = async ({ selectClient, initialDate, finalDate }) => {
   const users = await fetchHistoric();
-  const usersUnique = onlyUsersByClient(users.map(formatUser), client, dataFin, dataInit);
+  const usersUnique = onlyUsersByClient(users
+    .map(formatUser), selectClient, initialDate, finalDate);
   return usersUnique;
 };
 

@@ -1,54 +1,53 @@
 import React, { useState, useEffect } from 'react';
+import Header from '../../Components/Header/Header';
 import infosClients from '../../Middleware/infosClients';
+import { Container } from './Question1.styles';
 import uniqueClient from '../../Middleware/uniqueClient';
+import Filtro from '../../Components/Filtro/Filtro';
 
 const Question1 = () => {
   const [userByClient, setUserByClient] = useState();
   const [clients, setClients] = useState([]);
-  const [selectClient, setselectClient] = useState();
-  const [initialDate, setInitialDate] = useState('2022-08-01');
-  const [finalDate, setFinalDate] = useState('2022-08-10');
+
+  const [filter, setFilter] = useState({
+    selectClient: 'vagalume',
+    initialDate: '2022-08-01',
+    finalDate: '2022-08-10',
+  });
+
+  const handleInput = ({ target }) => {
+    setFilter({ ...filter, [target.name]: target.value });
+  };
 
   useEffect(() => {
     const getUniqueClient = async () => {
       setClients(await uniqueClient());
-      setselectClient('vagalume');
     };
     getUniqueClient();
   }, []);
 
   const searchUser = async () => {
-    const users = await infosClients(selectClient, finalDate, initialDate);
+    const users = await infosClients(filter);
     setUserByClient(users);
   };
 
   return (
-    <div>
-      <h1>Questão 1</h1>
-      <div>
-        <select onChange={({ target }) => setselectClient(target.value)}>
-          {clients && clients.map((client) => (
-            <option value={client} key={client}>{client}</option>
-          ))}
-        </select>
-        <label htmlFor="dataInicial">
-          Data inicial
-          <input onChange={({ target }) => setInitialDate(target.value)} value={initialDate} type="date" />
-        </label>
-        <label htmlFor="dataInicial">
-          Data Final
-          <input onChange={({ target }) => setFinalDate(target.value)} value={finalDate} type="date" />
-        </label>
-      </div>
+    <>
+      <Header />
+      <Container>
+        <h1>Questão 1</h1>
+        <Filtro handleInput={handleInput} clients={clients} filter={filter} />
+        <div>
+          {!userByClient
+            ? <h1>Clique no botão para saber o número de usuários</h1>
+            : <h1>{userByClient}</h1>}
+        </div>
 
-      {!userByClient
-        ? <h1>Clique no botão para saber o número de usuários</h1>
-        : <h1>{userByClient}</h1>}
-
-      <button type="button" onClick={searchUser}>
-        Pesquisar
-      </button>
-    </div>
+        <button type="button" onClick={searchUser}>
+          Pesquisar
+        </button>
+      </Container>
+    </>
   );
 };
 

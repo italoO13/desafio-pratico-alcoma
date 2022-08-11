@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-  width: 60%;
   height:80px;
   margin:5px;
-  min-width:40%;
   display:flex;
   flex-direction:column;
   justify-content:center;

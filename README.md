@@ -21,4 +21,5 @@ As seguintes Bibliotecas foram usadas na construção do projeto:
 -   **Eslint**
 -   **Prop-types**
 -   **Git commit msg Linter**
+-   **Docker**
 
